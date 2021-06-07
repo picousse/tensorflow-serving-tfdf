@@ -1,0 +1,6 @@
+tools/run_in_docker.sh -o "-p 8501:8501 " \
+bazel-bin/tensorflow_serving/model_servers/tensorflow_model_server \
+--rest_api_port=8501 \
+--model_name=half_plus_two \
+--model_base_path="gs://nifty-rex-315408-ai_platform/test_model" \
+-vv

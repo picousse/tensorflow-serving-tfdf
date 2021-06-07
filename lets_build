@@ -1,0 +1,2 @@
+tools/run_in_docker.sh bazel build tensorflow_serving/model_servers:tensorflow_model_server
+
