@@ -27,17 +27,10 @@
 # if we're inside a git tree
 if [ -d .git ] || git rev-parse --git-dir > /dev/null 2>&1; then
   git_rev=$(git rev-parse --short HEAD)
-<<<<<<< HEAD
   #if [[ $? != 0 ]];
   #then
   #    exit 1
   #fi
-=======
-  if [[ $? != 0 ]];
-  then
-      exit 1
-  fi
->>>>>>> b5ca0c6843c0a37af2bb0eb4c41bcb42f01a6593
   echo "BUILD_SCM_REVISION ${git_rev}"
 else
   echo "BUILD_SCM_REVISION no_git"

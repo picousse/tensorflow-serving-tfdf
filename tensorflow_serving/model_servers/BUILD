@@ -324,16 +324,10 @@ cc_library(
 
 # This is not inlined by tools bcos inlining non-constant values
 # is not provably safe.
-<<<<<<< HEAD
 SUPPORTED_TENSORFLOW_OPS = if_v2([ "//tensorflow_serving/custom_ops/tfdf:tfdf",  ]) + if_not_v2([
     "@org_tensorflow//tensorflow/contrib:contrib_kernels",
     "@org_tensorflow//tensorflow/contrib:contrib_ops_op_lib",
     "//tensorflow_serving/custom_ops/tfdf:tfdf",
-=======
-SUPPORTED_TENSORFLOW_OPS = if_v2([]) + if_not_v2([
-    "@org_tensorflow//tensorflow/contrib:contrib_kernels",
-    "@org_tensorflow//tensorflow/contrib:contrib_ops_op_lib",
->>>>>>> b5ca0c6843c0a37af2bb0eb4c41bcb42f01a6593
 ]) + [
     "@org_tensorflow_text//tensorflow_text:ops_lib",
 ]
