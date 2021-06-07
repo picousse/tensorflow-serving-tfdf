@@ -30,10 +30,7 @@ tf_serving_workspace()
 load(
     "@org_tensorflow//tensorflow:version_check.bzl",
     "check_bazel_version_at_least"
-)
-check_bazel_version_at_least("3.7.2")
-
-# Initialize TensorFlow's external dependencies.
+    )
 load("@org_tensorflow//tensorflow:workspace3.bzl", "workspace")
 workspace()
 load("@org_tensorflow//tensorflow:workspace2.bzl", "workspace")

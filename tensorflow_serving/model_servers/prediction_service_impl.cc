@@ -58,7 +58,11 @@ thread::ThreadPoolOptions GetThreadPoolOptions(
     run_options.set_timeout_in_ms(
         DeadlineToTimeoutMillis(context->raw_deadline()));
   }
+<<<<<<< HEAD
   VLOG(1) << "Predict started ! "
+=======
+
+>>>>>>> b5ca0c6843c0a37af2bb0eb4c41bcb42f01a6593
   const ::tensorflow::Status tf_status =
       predictor_->Predict(run_options, core_, *request, response);
   const ::grpc::Status status = ToGRPCStatus(tf_status);
