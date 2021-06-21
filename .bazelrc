@@ -43,10 +43,10 @@ build --apple_platform_type=macos
 build -c opt
 
 # LLVM, MLIR and TF require C++14.
-#build --cxxopt=-std=c++14
-build --cxxopt=-std=c++17
-#build --host_cxxopt=-std=c++14
-build --host_cxxopt=-std=c++17
+build --cxxopt=-std=c++14
+#build --cxxopt=-std=c++17
+build --host_cxxopt=-std=c++14
+#build --host_cxxopt=-std=c++17
 
 build --cxxopt=-lstdc++fs
 build --host_cxxopt=-lstdc++fs
@@ -67,5 +67,8 @@ build --nocheck_visibility
 build --cxxopt=-D_GLIBCXX_USE_CXX11_ABI=0
 
 build --workspace_status_command=/proc/self/cwd/tools/gen_status_stamp.sh
-
 build --experimental_repo_remote_exec
+
+build --define=use_tensorflow_io=1
+build --define=stop_training_on_interrupt=1
+build --define=no_absl_statusor=1
