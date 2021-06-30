@@ -1,7 +1,7 @@
 # Description: TensorFlow servables.
 
 load("//tensorflow_serving:oss_or_google.bzl", "if_google", "if_oss")
-load("//tensorflow_serving:serving.bzl", "serving_proto_library", "serving_tensorflow_proto_dep")
+load("//tensorflow_serving:serving.bzl", "serving_proto_library", "serving_proto_library_py", "serving_tensorflow_proto_dep")
 
 package(
     default_visibility = [
@@ -36,6 +36,12 @@ serving_proto_library(
             "@org_tensorflow//tensorflow/core:protos_all",
         ),
     ],
+)
+
+serving_proto_library_py(
+    name = "session_bundle_config_py_pb2",
+    proto_library = "session_bundle_config_proto",
+    visibility = ["//visibility:public"],
 )
 
 cc_library(
@@ -252,6 +258,12 @@ serving_proto_library(
     ],
 )
 
+serving_proto_library_py(
+    name = "saved_model_bundle_source_adapter_py_pb2",
+    proto_library = "saved_model_bundle_source_adapter_proto",
+    visibility = ["//visibility:public"],
+)
+
 cc_library(
     name = "simple_servers",
     srcs = ["simple_servers.cc"],
@@ -323,17 +335,22 @@ cc_library(
     ],
     deps = [
         ":serving_session",
+        "//tensorflow_serving/batching:incremental_barrier",
+        "//tensorflow_serving/batching:threadsafe_status",
         "@com_google_absl//absl/base:core_headers",
+        "@com_google_absl//absl/functional:bind_front",
         "@com_google_absl//absl/synchronization",
-        "@com_google_absl//absl/types:span",
         "@org_tensorflow//tensorflow/cc/saved_model:signature_constants",
+        "@org_tensorflow//tensorflow/core:framework",
         "@org_tensorflow//tensorflow/core:lib",
         "@org_tensorflow//tensorflow/core:protos_all_cc",
         "@org_tensorflow//tensorflow/core:session_options",
+        "@org_tensorflow//tensorflow/core/kernels/batching_util:basic_batch_scheduler",
         "@org_tensorflow//tensorflow/lite:external_cpu_backend_context",
         "@org_tensorflow//tensorflow/lite:framework",
         "@org_tensorflow//tensorflow/lite:string_util",
         "@org_tensorflow//tensorflow/lite:util",
+        "@org_tensorflow//tensorflow/lite/c:c_api",
         "@org_tensorflow//tensorflow/lite/c:common",
         "@org_tensorflow//tensorflow/lite/delegates/flex:delegate",
         "@org_tensorflow//tensorflow/lite/kernels:builtin_ops",
