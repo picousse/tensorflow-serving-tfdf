@@ -1,3 +1,5 @@
+Deprecated as I didn't create this as a fork -> https://github.com/picousse/serving
+
 # TensorFlow Serving
 
 [![Ubuntu Build Status](https://storage.googleapis.com/tensorflow-serving-kokoro-build-badges-bucket/ubuntu.svg)](https://storage.googleapis.com/tensorflow-serving-kokoro-build-badges-bucket/ubuntu.html)
